@@ -12,7 +12,11 @@ export class Specification implements SpecificationConstructor {
     id?: string;
 
     constructor(data: SpecificationConstructor) {
-        Object.assign(this, data);
+        Object.assign(this,
+            {
+                ...data,
+                created_at: new Date(),
+            });
         if (!this.id) {
             this.id = uuid();
         }
