@@ -1,15 +1,10 @@
 import { Category, } from '../models/categories';
 import { v4 as uuid } from 'uuid';
+import { ICategoriesRepository, ICreateCategoryDTO } from '../repositories/ICategoriesRepository';
 
 
 
-interface ICreateCategoryDTO {
-    name: string;
-    description: string;
-    created_at?: Date;
-}
-
-export class CategoriesRepository {
+export class CategoriesRepository implements ICategoriesRepository {
     private categories: Category[] = [];
 
     constructor() {
