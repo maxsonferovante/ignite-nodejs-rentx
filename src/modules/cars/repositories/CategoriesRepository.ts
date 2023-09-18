@@ -7,7 +7,10 @@ import { ICategoriesRepository, ICreateCategoryDTO } from './ICategoriesReposito
 export class CategoriesRepository implements ICategoriesRepository {
     private categories: Category[] = [];
 
-    constructor() {
+    // singleton pattern implementation = garantir que a classe só tenha uma instância
+    private static INSTANCE: CategoriesRepository;
+
+    private constructor() {
         this.categories = [
             {
                 id: uuid(),
@@ -22,6 +25,13 @@ export class CategoriesRepository implements ICategoriesRepository {
                 created_at: new Date(),
             }
         ];
+    }
+    // singleton pattern implementation = garantir que a classe só tenha uma instância
+    public static getInstance(): CategoriesRepository {
+        if (!CategoriesRepository.INSTANCE) {
+            CategoriesRepository.INSTANCE = new CategoriesRepository();
+        }
+        return CategoriesRepository.INSTANCE;
     }
 
     create(data: ICreateCategoryDTO): void {
