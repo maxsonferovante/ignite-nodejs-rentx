@@ -1,4 +1,4 @@
-import { Category, } from '../models/categories';
+import { Category } from '../models/Category';
 import { v4 as uuid } from 'uuid';
 import { ICategoriesRepository, ICreateCategoryDTO } from '../repositories/ICategoriesRepository';
 
