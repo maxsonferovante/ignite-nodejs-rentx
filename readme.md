@@ -1,6 +1,6 @@
 ## Projeto de Gestão de Aluguel de Carros 🚗
 
-Este projeto tem como objetivo criar um sistema de gerenciamento para uma empresa de aluguel de carros, abordando desde o cadastro de carros até a gestão dos alugueis e devoluções.
+Este projeto foi desenvolvido como parte da Trilha Ignite da Rocketseat. Tem como objetivo criar um sistema de gerenciamento para uma empresa de aluguel de carros, abordando desde o cadastro de carros até a gestão dos alugueis e devoluções.
 
 ### Funcionalidades Principais
 
@@ -36,7 +36,7 @@ Este projeto tem como objetivo criar um sistema de gerenciamento para uma empres
 
 - **Node.js:** Plataforma para execução de código JavaScript no lado do servidor.
 - **Express:** Framework para construção de aplicações web em Node.js.
-- **Multer:** Middleware para upload de arquivos, utilizado para cadastrar imagens dos carros.
-- **Banco de Dados:** Utilização de algum sistema de gerenciamento de banco de dados, como PostgreSQL ou MongoDB, para armazenamento das informações do projeto.
+- **Typescript:**  
+
 
 Este projeto visa oferecer uma solução completa para a gestão de aluguel de carros, atendendo tanto a empresa quanto os usuários que desejam alugar veículos.
