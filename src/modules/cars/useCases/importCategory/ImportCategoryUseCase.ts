@@ -34,6 +34,7 @@ export class ImportCategoryUseCase {
                 });
             })
                 .on("end", () => {
+                    fs.promises.unlink(file.path);
                     resolve(categories);
                 })
                 .on("error", (err) => {
@@ -41,14 +42,7 @@ export class ImportCategoryUseCase {
                 })
         });
     }
-    deleteFile(file: Express.Multer.File): Promise<void> {
-        return new Promise((resolve, reject) => {
-            fs.unlink(file.path, (err) => {
-                if (err) reject(err);
-                resolve();
-            })
-        })
-    }
+
     async execute(file: Express.Multer.File): Promise<void> {
         const categories = await this.loadCategories(file);
         categories.map(async (category) => {
@@ -63,6 +57,5 @@ export class ImportCategoryUseCase {
                 });
             }
         });
-        await this.deleteFile(file);
     }
 }
