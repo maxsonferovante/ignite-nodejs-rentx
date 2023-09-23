@@ -14,9 +14,9 @@ export class CreateCategoryUseCase {
         this.categoriesRepository = categoriesRepository;
     }
 
-    execute(data: IRequest): void {
+    async execute(data: IRequest): Promise<void> {
         // TODO
-        const categoryAlreadyExists = this.categoriesRepository.findByName(data.name);
+        const categoryAlreadyExists = await this.categoriesRepository.findByName(data.name);
         if (categoryAlreadyExists) {
             throw new Error('Category already exists!');
         }

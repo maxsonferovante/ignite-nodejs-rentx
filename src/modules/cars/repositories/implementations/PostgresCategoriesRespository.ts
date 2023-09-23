@@ -1,16 +1,51 @@
-import { Category } from "../../models/Category";
+import { Repository, } from "typeorm";
+import AppDataSource from "../../../../database/data-source";
+
+import { Category } from "../../entities/Category";
 import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
 
+
+
 export class PostgresCategoriesRespository implements ICategoriesRepository {
-    findByName(name: string): Category {
-        throw new Error("Method not implemented.");
+
+    private repository: Repository<Category>;
+
+    // private static INSTANCE: PostgresCategoriesRespository;
+
+    constructor() {
+        this.repository = AppDataSource.getRepository(Category);
     }
-    list(): Category[] {
-        throw new Error("Method not implemented.");
+
+    // public static getInstance(): PostgresCategoriesRespository {
+    //     if (!PostgresCategoriesRespository.INSTANCE) {
+    //         PostgresCategoriesRespository.INSTANCE = new PostgresCategoriesRespository();
+    //     }
+    //     return PostgresCategoriesRespository.INSTANCE;
+    // }
+
+
+    async findByName(name: string): Promise<Category> {
+        const category = await this.repository.findOneBy(
+            {
+                name
+            }
+        )
+        return category;
     }
-    create(data: ICreateCategoryDTO): void {
-        throw new Error("Method not implemented.");
+    async list(): Promise<Category[]> {
+        const categories = await this.repository.find();
+        return categories;
+    }
+
+    async create(data: ICreateCategoryDTO): Promise<void> {
+        const category = this.repository.create(
+            {
+                name: data.name,
+                description: data.description,
+            }
+        );
+        await this.repository.save(category);
     }
 
 }
