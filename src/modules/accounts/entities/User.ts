@@ -4,7 +4,6 @@ import { v4 as uuidV4 } from "uuid";
 
 export interface IUserConstructor {
     name: string;
-    username: string;
     password: string;
     email: string;
     driver_license: string;
@@ -18,8 +17,6 @@ export class User implements IUserConstructor {
     @Column()
     name: string;
 
-    @Column()
-    username: string;
 
     @Column()
     password: string;

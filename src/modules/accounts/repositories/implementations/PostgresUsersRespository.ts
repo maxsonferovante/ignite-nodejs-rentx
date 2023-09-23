@@ -14,7 +14,7 @@ export class PostgresUserRepository implements IUserRepository {
         const user = this.repository.create(
             {
                 name: data.name,
-                username: data.username,
+
                 password: data.password,
                 email: data.email,
                 driver_license: data.driver_license
@@ -35,12 +35,6 @@ export class PostgresUserRepository implements IUserRepository {
         return user;
     }
 
-    async findByUsername(username: string): Promise<User> {
-        const user = await this.repository.findOne({
-            where: { username }
-        });
-        return user;
-    }
     async list(): Promise<User[]> {
         const users = await this.repository.find();
         return users;
