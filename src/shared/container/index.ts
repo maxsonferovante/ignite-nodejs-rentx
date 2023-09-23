@@ -6,6 +6,10 @@ import { PostgresCategoriesRespository } from '../../modules/cars/repositories/i
 import { ISpecificationsRepository } from '../../modules/cars/repositories/ISpecificationsRepository';
 import { PostgresSpecificationsRepository } from '../../modules/cars/repositories/implementations/PostgresSpecificationsRepository';
 
+
+import { IUserRepository } from '../../modules/accounts/repositories/IUsersRepository';
+import { PostgresUserRepository } from '../../modules/accounts/repositories/implementations/PostgresUsersRespository';
+
 container.registerSingleton<ICategoriesRepository>(
     'PostgresCategoriesRespository',
     PostgresCategoriesRespository
@@ -14,4 +18,9 @@ container.registerSingleton<ICategoriesRepository>(
 container.registerSingleton<ISpecificationsRepository>(
     'PostgresSpecificationsRepository',
     PostgresSpecificationsRepository
+);
+
+container.registerSingleton<IUserRepository>(
+    'PostgresUserRepository',
+    PostgresUserRepository
 );
