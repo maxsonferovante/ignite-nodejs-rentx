@@ -24,13 +24,13 @@ export class PostgresUserRepository implements IUserRepository {
     }
     async findByEmail(email: string): Promise<User> {
         const user = await this.repository.findOne({
-            where: { email }
+            email
         });
         return user;
     }
     async findById(id: string): Promise<User> {
         const user = await this.repository.findOne({
-            where: { id }
+            id
         });
         return user;
     }

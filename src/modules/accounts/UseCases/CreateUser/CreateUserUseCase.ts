@@ -3,9 +3,11 @@ import { inject, injectable } from "tsyringe";
 import { PostgresUserRepository } from "../../repositories/implementations/PostgresUsersRespository";
 import { IUserConstructor } from "../../entities/User";
 
+import { hash } from "bcrypt";
 
 @injectable()
 export class CreateUserUseCase {
+    private static saltRounds = 8;
     constructor(
         @inject("PostgresUserRepository")
         private userRepository: PostgresUserRepository
@@ -15,6 +17,7 @@ export class CreateUserUseCase {
         if (userAlreadyExists) {
             throw new Error("User already exists");
         }
+        data.password = await hash(data.password, CreateUserUseCase.saltRounds);
 
         await this.userRepository.create(data);
     }
