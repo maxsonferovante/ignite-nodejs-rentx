@@ -1,22 +1,16 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
-import { Category } from "../../modules/cars/entities/Category";
-
-export class CreateCategories1695478850114 implements MigrationInterface {
+export class CreateSpecifications1695499037667 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: 'categories',
+                name: 'specifications',
                 columns: [
                     {
                         name: 'id',
                         type: 'uuid',
-
-
                         isPrimary: true,
-
-
                     },
                     {
                         name: 'name',
@@ -33,13 +27,10 @@ export class CreateCategories1695478850114 implements MigrationInterface {
                     },
                 ]
             }));
-
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('categories');
+        await queryRunner.dropTable('specifications');
     }
 
 }
-
-// npm run  typeorm migration:create -n src/database/migration/CreateCategoriesn
