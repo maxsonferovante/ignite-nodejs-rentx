@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  database_ignite:
+    image: postgres
+    container_name: database_ignite
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: ignite
+      POSTGRES_DB: rentx
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    networks:
+      - rentx-network
+
+  app:
+    build: .
+    container_name: app_rentx
+    restart: always
+    depends_on:
+      - database_ignite
+    ports:
+      - '3333:3333'
+    volumes:
+      - .:/usr/app
+    networks:
+      - rentx-network
+
+networks:
+  rentx-network:
+    driver: bridge

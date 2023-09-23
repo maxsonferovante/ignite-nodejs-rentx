@@ -7,6 +7,6 @@ const router = Router();
 
 router.use('/categories', categoriesRoutes)
 router.use('/specifications', specificationsRoutes)
-
+router.get('/', (req, res) => res.send('Hello World'))
 
 export { router }
