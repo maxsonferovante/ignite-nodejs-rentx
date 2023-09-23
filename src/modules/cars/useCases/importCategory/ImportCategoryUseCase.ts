@@ -1,7 +1,7 @@
 import fs from 'fs';
 import csvParse from 'csv-parse';
 import { inject, injectable } from 'tsyringe';
-import { CategoriesRepository } from '../../repositories/implementations/CategoriesRepository';
+import { PostgresCategoriesRespository } from '../../repositories/implementations/PostgresCategoriesRespository';
 
 
 
@@ -15,7 +15,7 @@ export class ImportCategoryUseCase {
 
     constructor(
         @inject('PostgresCategoriesRespository')
-        private categoriesRepository: CategoriesRepository
+        private categoriesRepository: PostgresCategoriesRespository
     ) { }
 
     loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {

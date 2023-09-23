@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Rentlx Documentation API",
-        "description": "This is the documentation for the Rentlx API",
+        "title": "Rentx Documentation API",
+        "description": "This is the documentation for the Rentx API",
         "version": "1.0.0",
         "contact": {
             "name": "Rentlx",
@@ -90,6 +90,134 @@
                 "responses": {
                     "200": {
                         "description": "Categories listed successfully"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "categories/import": {
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Import a new category",
+                "description": "Import a new category",
+                "operationId": "importCategory",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "file"
+                                ],
+                                "example": {
+                                    "file": "file.csv"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category imported successfully"
+                    },
+                    "400": {
+                        "description": "Category already exists!"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/specifications/create": {
+            "post": {
+                "tags": [
+                    "Specifications"
+                ],
+                "summary": "Create a new specification",
+                "description": "Create a new specification",
+                "operationId": "createSpecification",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "description"
+                                ],
+                                "example": {
+                                    "name": "Cars",
+                                    "description": "Cars for rent"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Specification created successfully"
+                    },
+                    "400": {
+                        "description": "Specification already exists!"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/specifications/list": {
+            "get": {
+                "tags": [
+                    "Specifications"
+                ],
+                "summary": "List all specifications",
+                "description": "List all specifications",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "name",
+                                "description"
+                            ],
+                            "example": {
+                                "name": "Cars",
+                                "description": "Cars for rent"
+                            }
+                        }
+                    }
+                },
+                "operationId": "listSpecifications",
+                "responses": {
+                    "200": {
+                        "description": "Specifications listed successfully"
                     },
                     "500": {
                         "description": "Internal server error"
