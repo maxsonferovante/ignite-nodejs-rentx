@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import multer from 'multer';
 import "reflect-metadata"
-import { CreateCategoryController } from '../modules/cars/useCases/createCategory/CreateCategoryController';
 
+import { CreateCategoryController } from '../modules/cars/useCases/createCategory/CreateCategoryController';
 import { ImportCategoryController } from '../modules/cars/useCases/importCategory/ImportCategoryController';
 import { ListCategoriesController } from '../modules/cars/useCases/listCategories/listCategoriesController';
 

@@ -1,7 +1,5 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm"
 
-import { Category } from "../../modules/cars/entities/Category";
-
 export class CreateCategories1695478850114 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
@@ -12,11 +10,7 @@ export class CreateCategories1695478850114 implements MigrationInterface {
                     {
                         name: 'id',
                         type: 'uuid',
-
-
                         isPrimary: true,
-
-
                     },
                     {
                         name: 'name',

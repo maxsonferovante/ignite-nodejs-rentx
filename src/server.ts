@@ -4,7 +4,7 @@ import SwaggerUi from 'swagger-ui-express';
 
 import "reflect-metadata";
 
-import './database';
+import './database/data-source';
 import './shared/container';
 
 const port = process.env.PORT || 3333;

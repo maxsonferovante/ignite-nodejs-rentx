@@ -4,9 +4,6 @@ import AppDataSource from "../../../../database/data-source";
 import { Category } from "../../entities/Category";
 import { ICategoriesRepository, ICreateCategoryDTO } from "../ICategoriesRepository";
 
-
-
-
 export class PostgresCategoriesRespository implements ICategoriesRepository {
 
     private repository: Repository<Category>;
@@ -35,6 +32,7 @@ export class PostgresCategoriesRespository implements ICategoriesRepository {
     }
     async list(): Promise<Category[]> {
         const categories = await this.repository.find();
+
         return categories;
     }
 
