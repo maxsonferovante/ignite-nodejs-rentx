@@ -27,8 +27,7 @@ export class Category implements CategoryConstructor {
     ) {
         Object.assign(this,
             {
-                ...data,
-                created_at: new Date(),
+                ...data
             });
         if (!this.id) {
             this.id = uuid();

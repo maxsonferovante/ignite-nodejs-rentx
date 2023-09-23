@@ -25,8 +25,7 @@ export class Specification implements SpecificationConstructor {
     constructor(data: SpecificationConstructor) {
         Object.assign(this,
             {
-                ...data,
-                created_at: new Date(),
+                ...data
             });
         if (!this.id) {
             this.id = uuid();
