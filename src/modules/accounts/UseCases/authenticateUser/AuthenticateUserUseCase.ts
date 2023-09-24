@@ -3,6 +3,8 @@ import { PostgresUserRepository } from "../../repositories/implementations/Postg
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 
+import { AppError } from "../../../../errors/AppError";
+
 interface IRequest {
     email: string;
     password: string;
@@ -28,12 +30,12 @@ export class AuthenticateUserUseCase {
         const user = await this.userRepository.findByEmail(data.email);
 
         if (!user) {
-            throw new Error("Email or password incorrect");
+            throw new AppError("Email or password incorrect", 401);
         }
         // Verificar se a senha está correta
         const passwordMatch = await compare(data.password, user.password);
         if (!passwordMatch) {
-            throw new Error("Email or password incorrect");
+            throw new AppError("Email or password incorrect", 401);
         }
         // Gerar token
         const token = sign({}, "adb9236f59c11475eb2019b4b224652a", {
