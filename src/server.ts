@@ -4,12 +4,14 @@ import SwaggerUi from 'swagger-ui-express';
 
 import "reflect-metadata";
 
-import './database/data-source';
+import createConnection from "./database";
 import './shared/container';
 
 const port = process.env.PORT || 3333;
 const localhost = process.env.LOCALHOST || 'localhost';
 
+
+createConnection();
 const app = express();
 
 app.use(express.json());

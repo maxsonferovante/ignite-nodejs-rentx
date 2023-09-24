@@ -1,14 +1,17 @@
 import { Repository } from "typeorm";
+import { getRepository } from "typeorm";
+
 import { IUserConstructor, User } from "../../entities/User";
 import { IUserRepository } from "../IUsersRepository";
-import AppDataSource from "../../../../database/data-source";
+
+
 
 export class PostgresUserRepository implements IUserRepository {
 
     private repository: Repository<User>;
 
     constructor() {
-        this.repository = AppDataSource.getRepository(User);
+        this.repository = getRepository(User);
     }
     async create(data: IUserConstructor): Promise<void> {
         const user = this.repository.create(
