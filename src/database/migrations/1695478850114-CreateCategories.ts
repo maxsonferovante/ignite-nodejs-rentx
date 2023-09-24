@@ -36,4 +36,4 @@ export class CreateCategories1695478850114 implements MigrationInterface {
 
 }
 
-// npm run  typeorm migration:create -n src/database/migration/CreateCategoriesn
+// npm run  typeorm migration:create -n src/database/migrations/CreateCategoriesn

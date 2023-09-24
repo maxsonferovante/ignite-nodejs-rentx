@@ -7,7 +7,11 @@ export interface IUserConstructor {
     password: string;
     email: string;
     driver_license: string;
+    id?: string;
+    avatar?: string;
 }
+
+
 
 @Entity("users")
 export class User implements IUserConstructor {
@@ -29,6 +33,9 @@ export class User implements IUserConstructor {
 
     @Column()
     isAdmin: boolean;
+
+    @Column()
+    avatar: string;
 
     @CreateDateColumn()
     created_at: Date;

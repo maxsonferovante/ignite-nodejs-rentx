@@ -17,10 +17,11 @@ export class PostgresUserRepository implements IUserRepository {
         const user = this.repository.create(
             {
                 name: data.name,
-
                 password: data.password,
                 email: data.email,
-                driver_license: data.driver_license
+                driver_license: data.driver_license,
+                avatar: data.avatar,
+                id: data.id,
             }
         );
         await this.repository.save(user);
