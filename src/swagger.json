@@ -285,6 +285,48 @@
                     }
                 }
             }
+        },
+        "users/avatar": {
+            "patch": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Upload a new avatar",
+                "description": "Upload a new avatar",
+                "operationId": "uploadAvatar",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "avatar": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "required": [
+                                    "avatar"
+                                ],
+                                "example": {
+                                    "avatar": "avatar.png"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Avatar uploaded successfully"
+                    },
+                    "400": {
+                        "description": "Avatar already exists!"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
     }
 }
